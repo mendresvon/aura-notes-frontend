@@ -28,11 +28,15 @@ const RegisterPage = () => {
       navigate("/login");
     } catch (err) {
       console.error("Registration failed:", err);
-      // Let's try to find the best error message to display.
-      // We check for an 'errors' array first, then a 'msg' string.
-      const errorMessage = err.errors ? err.errors[0].msg : err.msg;
 
-      setError(errorMessage || "An unexpected error occurred. Please try again.");
+      // Axios errors nest the response data under `err.response.data`
+      // We check for that first, then fall back to a generic message.
+      const errorMessage =
+        err.response && err.response.data && err.response.data.msg
+          ? err.response.data.msg
+          : "An unexpected error occurred. Please try again.";
+
+      setError(errorMessage);
     }
   };
 
