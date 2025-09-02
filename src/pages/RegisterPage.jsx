@@ -28,7 +28,11 @@ const RegisterPage = () => {
       navigate("/login");
     } catch (err) {
       console.error("Registration failed:", err);
-      setError(err.msg || "An error occurred. Please try again.");
+      // Let's try to find the best error message to display.
+      // We check for an 'errors' array first, then a 'msg' string.
+      const errorMessage = err.errors ? err.errors[0].msg : err.msg;
+
+      setError(errorMessage || "An unexpected error occurred. Please try again.");
     }
   };
 
