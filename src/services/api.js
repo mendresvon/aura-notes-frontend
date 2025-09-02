@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an instance of axios with a base URL
 const api = axios.create({
-  baseURL: "https://aura-notes-backend-5omd.onrender.com/api", // Your backend server's URL
+  baseURL: "https://aura-notes-backend-5omd.onrender.com/api",
 });
 
 // Interceptor: Automatically attach the token to every request
