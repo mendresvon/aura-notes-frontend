@@ -5,7 +5,7 @@ import { getNotes, createNote, updateNote, deleteNote } from "../services/api";
 import Modal from "react-modal";
 import NoteForm from "../components/NoteForm";
 import NoteCard from "../components/NoteCard";
-import GlowingCursor from "../components/GlowingCursor"; // Import the new component
+import GlowingCursor from "../components/GlowingCursor";
 
 Modal.setAppElement("#root");
 
@@ -92,7 +92,8 @@ const DashboardPage = () => {
 
   return (
     <div className="min-h-full bg-[#111111] text-gray-200 font-sans overflow-hidden relative">
-      <GlowingCursor />
+      {/* The isModalOpen state is now passed to the cursor component */}
+      <GlowingCursor isModalOpen={isModalOpen} />
 
       <div className="absolute top-0 left-0 w-72 h-72 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
       <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
