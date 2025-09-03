@@ -5,6 +5,7 @@ import { getNotes, createNote, updateNote, deleteNote } from "../services/api";
 import Modal from "react-modal";
 import NoteForm from "../components/NoteForm";
 import NoteCard from "../components/NoteCard";
+import GlowingCursor from "../components/GlowingCursor"; // Import the new component
 
 Modal.setAppElement("#root");
 
@@ -16,7 +17,7 @@ const DashboardPage = () => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingNote, setEditingNote] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(""); // State for search
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchNotes = useCallback(async () => {
     try {
@@ -43,7 +44,6 @@ const DashboardPage = () => {
     navigate("/login");
   };
 
-  // ... (modal and note handlers remain the same)
   const handleOpenModalForCreate = () => {
     setEditingNote(null);
     setIsModalOpen(true);
@@ -92,6 +92,8 @@ const DashboardPage = () => {
 
   return (
     <div className="min-h-full bg-[#111111] text-gray-200 font-sans overflow-hidden relative">
+      <GlowingCursor />
+
       <div className="absolute top-0 left-0 w-72 h-72 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
       <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-pink-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
@@ -104,11 +106,8 @@ const DashboardPage = () => {
               style={{ fontFamily: "'Playfair Display', serif" }}>
               Aura Notes
             </h1>
-            {/* I also fixed the <xt-> typo to be a <div> */}
             <div className="flex items-center gap-4">
-              {/* 1. Wrapper for positioning the icon */}
               <div className="relative">
-                {/* 2. SVG Icon */}
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg
                     className="h-5 w-5 text-gray-400"
@@ -128,7 +127,6 @@ const DashboardPage = () => {
                   placeholder="Search notes..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  // 3. Updated classes for width and padding
                   className="w-full max-w-l p-2 pl-10 rounded-md bg-zinc-800/80 border border-zinc-700 text-gray-200 placeholder-gray-500 hover:border-purple-600 focus:ring-1 focus:ring-purple-700 focus:border-purple-500 outline-none transition-all duration-300"
                 />
               </div>
@@ -154,7 +152,6 @@ const DashboardPage = () => {
         {loading ? (
           <div className="text-center py-16 text-gray-500">Loading your notes...</div>
         ) : filteredNotes.length > 0 ? (
-          // Use CSS columns for a masonry effect
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
             {filteredNotes.map((note, index) => (
               <NoteCard
@@ -174,7 +171,6 @@ const DashboardPage = () => {
         )}
       </main>
 
-      {/* Modal remains the same */}
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}
