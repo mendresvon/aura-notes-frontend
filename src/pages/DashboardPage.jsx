@@ -104,26 +104,46 @@ const DashboardPage = () => {
               style={{ fontFamily: "'Playfair Display', serif" }}>
               Aura Notes
             </h1>
-            <xt- className="flex items-center gap-4">
-              <input
-                type="text"
-                placeholder="Search notes..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full max-w-xs p-2 rounded-md bg-black/40 border border-white/20 text-gray-200 placeholder-gray-500 hover:border-purple-500/50 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all duration-300"
-              />
+            {/* I also fixed the <xt-> typo to be a <div> */}
+            <div className="flex items-center gap-4">
+              {/* 1. Wrapper for positioning the icon */}
+              <div className="relative">
+                {/* 2. SVG Icon */}
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg
+                    className="h-5 w-5 text-gray-400"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true">
+                    <path
+                      fillRule="evenodd"
+                      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search notes..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  // 3. Updated classes for width and padding
+                  className="w-full max-w-md p-2 pl-10 rounded-md bg-zinc-800/80 border border-zinc-700 text-gray-200 placeholder-gray-500 hover:border-purple-600 focus:ring-1 focus:ring-purple-700 focus:border-purple-500 outline-none transition-all duration-300"
+                />
+              </div>
               <button
                 onClick={handleLogout}
                 className="px-4 py-2 !bg-transparent text-sm font-medium !text-gray-400 rounded-md hover:bg-white/10 hover:text-white! transition-all duration-300">
                 Logout
               </button>
-            </xt->
+            </div>
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 z-10 relative">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-end items-center mb-8">
           <button
             onClick={handleOpenModalForCreate}
             className="px-5 py-2 text-white font-semibold bg-gradient-to-l from-purple-900 to-indigo-900 rounded-md shadow-lg hover:opacity-90 transform hover:scale-105 !transition-transform duration-300 ease-in-out">
@@ -162,9 +182,7 @@ const DashboardPage = () => {
           contentLabel={editingNote ? "Edit Note" : "New Note"}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-[#18181B]/80 backdrop-blur-xl border border-white/10 shadow-2xl rounded-lg p-8 text-white outline-none animate-fadeInUp"
           overlayClassName="fixed inset-0 bg-black/60 z-30">
-          <h2
-            className="text-2xl font-bold font-sans mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h2 className="text-2xl font-bold font-sans mb-6">
             {editingNote ? "Edit Note" : "New Note"}
           </h2>
           <NoteForm onSave={handleSaveNote} onCancel={handleCloseModal} note={editingNote} />
