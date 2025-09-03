@@ -104,7 +104,7 @@ const DashboardPage = () => {
               style={{ fontFamily: "'Playfair Display', serif" }}>
               Aura Notes
             </h1>
-            <div className="flex items-center gap-4">
+            <xt- className="flex items-center gap-4">
               <input
                 type="text"
                 placeholder="Search notes..."
@@ -117,14 +117,13 @@ const DashboardPage = () => {
                 className="px-4 py-2 !bg-transparent text-sm font-medium !text-gray-400 rounded-md hover:bg-white/10 hover:text-white! transition-all duration-300">
                 Logout
               </button>
-            </div>
+            </xt->
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 z-10 relative">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl font-bold text-white">Your Notes</h2>
           <button
             onClick={handleOpenModalForCreate}
             className="px-5 py-2 text-white font-semibold bg-gradient-to-l from-purple-900 to-indigo-900 rounded-md shadow-lg hover:opacity-90 transform hover:scale-105 !transition-transform duration-300 ease-in-out">
