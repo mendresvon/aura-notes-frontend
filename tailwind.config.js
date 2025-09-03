@@ -3,9 +3,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      // Add these animations for the background blobs
       animation: {
-        blob: "blob 7s infinite",
+        blob: "blob 12s infinite", // Slow down the animation
         fadeInUp: "fadeInUp 0.8s ease-in-out",
       },
       keyframes: {
@@ -16,12 +15,13 @@ export default {
           "100%": { transform: "translate(0px, 0px) scale(1)" },
         },
         fadeInUp: {
-          // Add these keyframes
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/line-clamp"), // Add this line
+  ],
 };

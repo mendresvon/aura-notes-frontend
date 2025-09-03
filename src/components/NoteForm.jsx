@@ -28,7 +28,8 @@ const NoteForm = ({ onSave, onCancel, note }) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-          className="w-full p-3 rounded-md bg-black/40 border border-white/20 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 outline-none"
+          autoFocus
+          className="w-full p-3 rounded-md bg-black/40 border border-white/20 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 outline-none transition-all duration-600"
         />
       </div>
       <div>
@@ -40,15 +41,15 @@ const NoteForm = ({ onSave, onCancel, note }) => {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
-          rows="5"
-          className="w-full p-3 rounded-md bg-black/40 border border-white/20 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 outline-none"
+          rows="10"
+          className="w-full p-3 rounded-md bg-black/40 border border-white/20 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 outline-none resize-y transition-all duration-600"
         />
       </div>
       <div className="flex justify-end gap-4">
         <button
           type="button"
           onClick={onCancel}
-          className="px-5 py-2 text-white font-semibold bg-black/30 rounded-md hover:bg-white/10">
+          className="px-5 py-2 text-gray-400 font-semibold rounded-md hover:bg-white/5 transition-colors">
           Cancel
         </button>
         <button
