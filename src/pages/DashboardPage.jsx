@@ -96,7 +96,7 @@ const DashboardPage = () => {
       <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-pink-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
 
-      <header className="bg-black/30 backdrop-blur-xl border-b border-white/10 sticky top-0 z-20">
+      <header className="bg-black/30 backdrop-blur-xl border-b border-white/5 sticky top-0 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <h1
