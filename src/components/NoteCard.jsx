@@ -26,20 +26,20 @@ const NoteCard = ({ note, onEdit, onDelete, index }) => {
         {/* Increased line-clamp for better content preview in a masonry grid */}
         <p className="text-gray-400 text-sm line-clamp-6 whitespace-pre-wrap">{note.content}</p>
       </div>
-      <div className="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+      <div className="mt-4 pt-4 border-t border-white/1 flex justify-between items-center">
         <span className="text-xs text-gray-500">
           {note.updatedAt ? format(new Date(note.updatedAt), "MMM d, yyyy") : ""}
         </span>
         <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <button
             onClick={handleEditClick}
-            className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-purple-400 transition-colors"
+            className="p-2 bg-transparent! rounded-full hover:bg-white/10 text-gray-400 hover:text-purple-400 transition-colors"
             aria-label="Edit note">
             <FiEdit size={18} />
           </button>
           <button
             onClick={handleDeleteClick}
-            className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-red-500 transition-colors"
+            className="p-2 bg-transparent! rounded-full hover:bg-white/10 text-gray-400 hover:text-red-500 transition-colors"
             aria-label="Delete note">
             <FiTrash2 size={18} />
           </button>
