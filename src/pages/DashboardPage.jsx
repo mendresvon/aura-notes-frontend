@@ -114,7 +114,7 @@ const DashboardPage = () => {
               />
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-white/10 border border-transparent hover:border-white/20 transition-all duration-300">
+                className="px-4 py-2 !bg-transparent text-sm font-medium !text-gray-400 rounded-md hover:bg-white/10 hover:text-white! transition-all duration-300">
                 Logout
               </button>
             </div>
@@ -127,7 +127,7 @@ const DashboardPage = () => {
           <h2 className="text-4xl font-bold text-white">Your Notes</h2>
           <button
             onClick={handleOpenModalForCreate}
-            className="px-5 py-2 text-white font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 rounded-md shadow-lg shadow-purple-600/20 hover:opacity-90 transition-all duration-300 transform hover:scale-105">
+            className="px-5 py-2 text-white font-semibold bg-gradient-to-l from-purple-900 to-indigo-900 rounded-md shadow-lg hover:opacity-90 transform hover:scale-105 !transition-transform duration-300 ease-in-out">
             + New Note
           </button>
         </div>
