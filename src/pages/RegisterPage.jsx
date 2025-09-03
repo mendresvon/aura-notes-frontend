@@ -146,7 +146,7 @@ const RegisterPage = () => {
                 <div>
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold shadow-lg transition-all ease-in-out duration-300 transform hover:scale-105">
+                    className="w-full py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold shadow-lg !transition-all ease-in-out duration-300 transform hover:scale-105">
                     Create Account
                   </button>
                 </div>
