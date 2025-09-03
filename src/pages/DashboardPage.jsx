@@ -129,7 +129,7 @@ const DashboardPage = () => {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   // 3. Updated classes for width and padding
-                  className="w-full max-w-md p-2 pl-10 rounded-md bg-zinc-800/80 border border-zinc-700 text-gray-200 placeholder-gray-500 hover:border-purple-600 focus:ring-1 focus:ring-purple-700 focus:border-purple-500 outline-none transition-all duration-300"
+                  className="w-full max-w-l p-2 pl-10 rounded-md bg-zinc-800/80 border border-zinc-700 text-gray-200 placeholder-gray-500 hover:border-purple-600 focus:ring-1 focus:ring-purple-700 focus:border-purple-500 outline-none transition-all duration-300"
                 />
               </div>
               <button
