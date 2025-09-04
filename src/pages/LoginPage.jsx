@@ -12,18 +12,23 @@ const LoginPage = () => {
     password: "",
   });
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
   const { email, password } = formData;
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Set loading to true when form is submitted
+    setError(null);
     try {
       const data = await loginUser({ email, password });
       login(data.token);
       navigate("/");
     } catch (err) {
       setError(err.msg || "Login failed. Please check your credentials.");
+    } finally {
+      setIsLoading(false); // Set loading to false after request is complete
     }
   };
 
@@ -106,14 +111,20 @@ const LoginPage = () => {
             <div>
               <button
                 type="submit"
-                className="w-full py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold shadow-lg !transition-all ease-in-out duration-300 transform hover:scale-105">
-                Sign In
+                disabled={isLoading}
+                className="w-full py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold shadow-lg !transition-all ease-in-out duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                {isLoading ? "Signing In..." : "Sign In"}
               </button>
             </div>
           </div>
         </form>
 
-        {/* Error Message Display */}
+        {/* Loading and Error Message Display */}
+        {isLoading && (
+          <div className="text-center text-sm text-gray-400 mt-4">
+            <p>Waking up the server... this might take a moment.</p>
+          </div>
+        )}
         {error && <p className="text-center text-red-400 mt-4">{error}</p>}
 
         {/* Sign Up Link */}
