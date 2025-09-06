@@ -79,7 +79,7 @@ const LoginPage = () => {
           </AnimatedComponent>
           <AnimatedComponent delay={0.3}>
             <TypeAnimation
-              sequence={['By Von Mendres']}
+              sequence={[1000, "By Von Mendres「馬盛中」"]}
               wrapper="p"
               cursor={true}
               speed={50}
