@@ -101,14 +101,14 @@ const DashboardPage = () => {
 
       <header className="bg-black/30 backdrop-blur-xl border-b border-white/5 sticky top-0 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex flex-col md:flex-row items-center justify-between h-auto md:h-16 py-4 md:py-0">
             <h1
               className="text-2xl font-bold font-serif text-gray-100"
               style={{ fontFamily: "'Playfair Display', serif" }}>
               Aura Notes
             </h1>
-            <div className="flex items-center gap-4">
-              <div className="relative">
+            <div className="flex items-center gap-4 mt-4 md:mt-0">
+              <div className="relative flex-grow md:flex-grow-0">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg
                     className="h-5 w-5 text-gray-400"
@@ -128,7 +128,7 @@ const DashboardPage = () => {
                   placeholder="Search notes..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full max-w-l p-2 pl-10 rounded-md bg-zinc-800/80 border border-zinc-700 text-gray-200 placeholder-gray-500 hover:border-purple-600 focus:ring-1 focus:ring-purple-700 focus:border-purple-500 outline-none transition-all duration-300"
+                  className="w-full p-2 pl-10 rounded-md bg-zinc-800/80 border border-zinc-700 text-gray-200 placeholder-gray-500 hover:border-purple-600 focus:ring-1 focus:ring-purple-700 focus:border-purple-500 outline-none transition-all duration-300"
                 />
               </div>
               <button

@@ -65,14 +65,14 @@ const LoginPage = () => {
         <div className="text-center mb-10">
           <AnimatedComponent delay={0.1}>
             <div
-              className="inline-block font-bold text-7xl bg-gradient-to-r from-gray-200 to-gray-400 text-transparent bg-clip-text mb-2"
+              className="inline-block font-bold text-6xl md:text-7xl bg-gradient-to-r from-gray-200 to-gray-400 text-transparent bg-clip-text mb-2"
               style={{ fontFamily: "'Playfair Display', serif" }}>
               Aura
             </div>
           </AnimatedComponent>
           <AnimatedComponent delay={0.2}>
             <h1
-              className="text-4xl font-bold text-gray-100"
+              className="text-3xl md:text-4xl font-bold text-gray-100"
               style={{ fontFamily: "'Playfair Display', serif" }}>
               Notes
             </h1>
