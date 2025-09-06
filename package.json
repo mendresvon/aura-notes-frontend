@@ -15,6 +15,7 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "axios": "^1.11.0",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.12",
     "masonry-layout": "^4.2.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

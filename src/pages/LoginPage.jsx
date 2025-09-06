@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TypeAnimation } from "react-type-animation"; // Import the library
+import { TypeAnimation } from "react-type-animation";
 import { loginUser } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import AnimatedComponent from "../components/AnimatedComponent"; // Import the new component
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -59,91 +60,79 @@ const LoginPage = () => {
       <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-pink-600 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
 
       {/* Glassmorphism Login Card */}
-      <div className="w-full max-w-md rounded-2xl bg-black/30 backdrop-blur-xl border border-white/10 shadow-2xl p-8 md:p-12 z-10 transition-all duration-500 ease-in-out hover:shadow-purple-500/20 hover:shadow-2xl hover:-translate-y-2 animate-fadeInUp">
+      <div className="w-full max-w-md rounded-2xl bg-black/30 backdrop-blur-xl border border-white/10 shadow-2xl p-8 md:p-12 z-10 transition-all duration-500 ease-in-out hover:shadow-purple-500/20 hover:shadow-2xl hover:-translate-y-2">
         {/* Header */}
         <div className="text-center mb-10">
-          <div
-            className="inline-block font-bold text-7xl bg-gradient-to-r from-gray-200 to-gray-400 text-transparent bg-clip-text mb-2 animate-fadeInUp"
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              animationDelay: "0.2s",
-              animationFillMode: "backwards",
-            }}>
-            Aura
-          </div>
-          <h1
-            className="text-4xl font-bold text-gray-100 animate-fadeInUp"
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              animationDelay: "0.4s",
-              animationFillMode: "backwards",
-            }}>
-            Notes
-          </h1>
-
-          {/* THIS IS THE NEW TYPEWRITER COMPONENT */}
-          <div
-            className="animate-fadeInUp"
-            style={{ animationDelay: "0.6s", animationFillMode: "backwards" }}>
+          <AnimatedComponent delay={0.1}>
+            <div
+              className="inline-block font-bold text-7xl bg-gradient-to-r from-gray-200 to-gray-400 text-transparent bg-clip-text mb-2"
+              style={{ fontFamily: "'Playfair Display', serif" }}>
+              Aura
+            </div>
+          </AnimatedComponent>
+          <AnimatedComponent delay={0.2}>
+            <h1
+              className="text-4xl font-bold text-gray-100"
+              style={{ fontFamily: "'Playfair Display', serif" }}>
+              Notes
+            </h1>
+          </AnimatedComponent>
+          <AnimatedComponent delay={0.3}>
             <TypeAnimation
-              sequence={[
-                600, // Wait 600ms (to sync with the fadeInUp animation)
-                "By Von Mendres「馬盛中」",
-              ]}
+              sequence={['By Von Mendres']}
               wrapper="p"
               cursor={true}
               speed={50}
               className="text-gray-400 mt-2"
             />
-          </div>
+          </AnimatedComponent>
         </div>
 
         {/* Form */}
-        <form
-          onSubmit={onSubmit}
-          className="animate-fadeInUp"
-          style={{ animationDelay: "0.8s", animationFillMode: "backwards" }}>
-          <div className="space-y-6">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={email}
-                onChange={onChange}
-                placeholder="you@example.com"
-                required
-                className="w-full p-3 rounded-md bg-black/40 border border-white/20 text-gray-200 placeholder-gray-500 hover:border-purple-500/50 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all duration-300"
-              />
+        <AnimatedComponent delay={0.4}>
+          <form onSubmit={onSubmit}>
+            <div className="space-y-6">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={email}
+                  onChange={onChange}
+                  placeholder="you@example.com"
+                  required
+                  className="w-full p-3 rounded-md bg-black/40 border border-white/20 text-gray-200 placeholder-gray-500 hover:border-purple-500/50 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all duration-300"
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-400 mb-2">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={password}
+                  onChange={onChange}
+                  placeholder="••••••••"
+                  required
+                  className="w-full p-3 rounded-md bg-black/40 border border-white/20 text-gray-200 placeholder-gray-500 hover:border-purple-500/50 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all duration-300"
+                />
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold shadow-lg !transition-all ease-in-out duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                  {isLoading ? "Signing In..." : "Sign In"}
+                </button>
+              </div>
             </div>
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-400 mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={password}
-                onChange={onChange}
-                placeholder="••••••••"
-                required
-                className="w-full p-3 rounded-md bg-black/40 border border-white/20 text-gray-200 placeholder-gray-500 hover:border-purple-500/50 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all duration-300"
-              />
-            </div>
-            <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold shadow-lg !transition-all ease-in-out duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
-                {isLoading ? "Signing In..." : "Sign In"}
-              </button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </AnimatedComponent>
 
         {isLoading && (
           <div className="text-center text-sm text-gray-400 mt-4">
@@ -153,16 +142,16 @@ const LoginPage = () => {
         {error && <p className="text-center text-red-400 mt-4">{error}</p>}
 
         {/* Sign Up Link */}
-        <div
-          className="mt-8 text-center animate-fadeInUp"
-          style={{ animationDelay: "1s", animationFillMode: "backwards" }}>
-          <p className="text-sm text-gray-400">
-            Don't have an account?{" "}
-            <a href="/register" className="font-medium text-purple-400 hover:underline">
-              Sign Up
-            </a>
-          </p>
-        </div>
+        <AnimatedComponent delay={0.5}>
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-400">
+              Don't have an account?{" "}
+              <a href="/register" className="font-medium text-purple-400 hover:underline">
+                Sign Up
+              </a>
+            </p>
+          </div>
+        </AnimatedComponent>
       </div>
     </div>
   );
