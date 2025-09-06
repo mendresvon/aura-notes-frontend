@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { TypeAnimation } from "react-type-animation"; // Import the library
 import { loginUser } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 
@@ -12,14 +13,14 @@ const LoginPage = () => {
     password: "",
   });
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); // New state for loading
+  const [isLoading, setIsLoading] = useState(false);
   const { email, password } = formData;
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Set loading to true when form is submitted
+    setIsLoading(true);
     setError(null);
     try {
       const data = await loginUser({ email, password });
@@ -28,11 +29,10 @@ const LoginPage = () => {
     } catch (err) {
       setError(err.msg || "Login failed. Please check your credentials.");
     } finally {
-      setIsLoading(false); // Set loading to false after request is complete
+      setIsLoading(false);
     }
   };
 
-  // State and effect for the cursor glow
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -58,25 +58,51 @@ const LoginPage = () => {
       <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-600 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-pink-600 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
 
-      {/* Glassmorphism Login Card with Hover and Entry Animation */}
+      {/* Glassmorphism Login Card */}
       <div className="w-full max-w-md rounded-2xl bg-black/30 backdrop-blur-xl border border-white/10 shadow-2xl p-8 md:p-12 z-10 transition-all duration-500 ease-in-out hover:shadow-purple-500/20 hover:shadow-2xl hover:-translate-y-2 animate-fadeInUp">
-        {/* Header with Monogram */}
+        {/* Header */}
         <div className="text-center mb-10">
           <div
-            className="inline-block font-bold text-7xl bg-gradient-to-r from-gray-200 to-gray-400 text-transparent bg-clip-text mb-2"
-            style={{ fontFamily: "'Playfair Display', serif" }}>
+            className="inline-block font-bold text-7xl bg-gradient-to-r from-gray-200 to-gray-400 text-transparent bg-clip-text mb-2 animate-fadeInUp"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              animationDelay: "0.2s",
+              animationFillMode: "backwards",
+            }}>
             Aura
           </div>
           <h1
-            className="text-4xl font-bold text-gray-100"
-            style={{ fontFamily: "'Playfair Display', serif" }}>
+            className="text-4xl font-bold text-gray-100 animate-fadeInUp"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              animationDelay: "0.4s",
+              animationFillMode: "backwards",
+            }}>
             Notes
           </h1>
-          <p className="text-gray-400 mt-2">By Von Mendres</p>
+
+          {/* THIS IS THE NEW TYPEWRITER COMPONENT */}
+          <div
+            className="animate-fadeInUp"
+            style={{ animationDelay: "0.6s", animationFillMode: "backwards" }}>
+            <TypeAnimation
+              sequence={[
+                600, // Wait 600ms (to sync with the fadeInUp animation)
+                "By Von Mendres「馬盛中」",
+              ]}
+              wrapper="p"
+              cursor={true}
+              speed={50}
+              className="text-gray-400 mt-2"
+            />
+          </div>
         </div>
 
-        {/* Form with Premium Inputs */}
-        <form onSubmit={onSubmit}>
+        {/* Form */}
+        <form
+          onSubmit={onSubmit}
+          className="animate-fadeInUp"
+          style={{ animationDelay: "0.8s", animationFillMode: "backwards" }}>
           <div className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
@@ -119,7 +145,6 @@ const LoginPage = () => {
           </div>
         </form>
 
-        {/* Loading and Error Message Display */}
         {isLoading && (
           <div className="text-center text-sm text-gray-400 mt-4">
             <p>Waking up the server... this might take a moment.</p>
@@ -128,7 +153,9 @@ const LoginPage = () => {
         {error && <p className="text-center text-red-400 mt-4">{error}</p>}
 
         {/* Sign Up Link */}
-        <div className="mt-8 text-center">
+        <div
+          className="mt-8 text-center animate-fadeInUp"
+          style={{ animationDelay: "1s", animationFillMode: "backwards" }}>
           <p className="text-sm text-gray-400">
             Don't have an account?{" "}
             <a href="/register" className="font-medium text-purple-400 hover:underline">

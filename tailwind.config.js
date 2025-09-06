@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       animation: {
-        blob: "blob 12s infinite", // Slow down the animation
+        blob: "blob 12s infinite",
         fadeInUp: "fadeInUp 0.8s ease-in-out",
       },
       keyframes: {
@@ -21,7 +21,5 @@ export default {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/line-clamp"), // Add this line
-  ],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
